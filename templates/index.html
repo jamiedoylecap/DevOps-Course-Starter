@@ -32,7 +32,7 @@
       <h2>Doing</h2>
       <ul class="list-group mb-12">
         {% for tditem in view_model.list_doing %}
-          <p class="list-group-item list-group-item-action"><a class="btn btn-outline-primary btn-sm" href="/movetonew/{{tditem.id}}" type="submit">To Do</a>{{tditem.name}}<a class="btn btn-outline-success btn-sm" href="/movetodone/{{tditem.id}}" type="submit">Done</a></p>
+          <p class="list-group-item list-group-item-action"><a class="btn btn-outline-primary btn-sm" href="/movetonew/{{tditem.item_id}}" type="submit">To Do</a>{{tditem.name}}<a class="btn btn-outline-success btn-sm" href="/movetodone/{{tditem.item_id}}" type="submit">Done</a></p>
         {% endfor %}
       </ul>
     </div>
@@ -40,7 +40,7 @@
       <h2>Done</h2>
       <ul class="list-group mb-12">
         {% for tditem in view_model.list_done %}
-          <p class="list-group-item list-group-item-action"><a class="btn btn-outline-primary btn-sm" href="/movetonew/{{tditem.id}}" type="submit">To Do</a><a class="btn btn-outline-warning btn-sm" href="/movetodoing/{{tditem.id}}" type="submit">Doing</a>{{tditem.name}}</p>
+          <p class="list-group-item list-group-item-action"><a class="btn btn-outline-primary btn-sm" href="/movetonew/{{tditem.item_id}}" type="submit">To Do</a><a class="btn btn-outline-warning btn-sm" href="/movetodoing/{{tditem.item_id}}" type="submit">Doing</a>{{tditem.name}}</p>
         {% endfor %}
       </ul>
     </div>
