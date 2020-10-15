@@ -4,7 +4,7 @@ class Todo:
         self.name = name
         self.status = status
 
-class IndexView:
+class Index_view:
     def __init__(self, list_todo, list_doing, list_done):
         self.list_todo = list_todo
         self.list_doing = list_doing
@@ -24,4 +24,4 @@ class IndexView:
         for iteminjson in done_list_api_response_in_json:
             class_done_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Done'))
         
-        return IndexView(class_todo_list_api_response, class_doing_list_api_response, class_done_list_api_response)
+        return Index_view(class_todo_list_api_response, class_doing_list_api_response, class_done_list_api_response)
