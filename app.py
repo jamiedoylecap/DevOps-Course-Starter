@@ -2,35 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 from flask import Flask, render_template, request, redirect, url_for
-
-class Todo:
-    def __init__(self, item_id, name, status):
-        self.item_id = item_id
-        self.name = name
-        self.status = status
-       
-
-class IndexViewModel:
-    def __init__(self, list_todo, list_doing, list_done):
-        self.list_todo = list_todo
-        self.list_doing = list_doing
-        self.list_done = list_done
-
-    @staticmethod
-    def build_from_json(todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json):
-        class_todo_list_api_response = []
-        for iteminjson in todo_list_api_response_in_json:
-            class_todo_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'To Do'))
-
-        class_doing_list_api_response = []
-        for iteminjson in doing_list_api_response_in_json:
-            class_doing_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Doing'))
-        
-        class_done_list_api_response = []
-        for iteminjson in done_list_api_response_in_json:
-            class_done_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Done'))
-        
-        return IndexViewModel(class_todo_list_api_response, class_doing_list_api_response, class_done_list_api_response)
+from viewmodel import Todo, IndexView
 
 
 app = Flask(__name__)
@@ -49,24 +21,11 @@ def move_card_to_list(card_id, new_list_id):
 def index():
 
     todo_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_TODO') + '/cards', params=get_trello_auth()).json()
-
-    # todo_list_api_response_in_json = my_data.get_todo_list()
-    # class_todo_list_api_response = []
-    # for iteminjson in todo_list_api_response_in_json:
-    #     class_todo_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'To Do'))
-
     doing_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DOING') + '/cards', params=get_trello_auth()).json()
-    # class_doing_list_api_response = []
-    # for iteminjson in doing_list_api_response_in_json:
-    #     class_doing_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Doing'))
-    
     done_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DONE') + '/cards', params=get_trello_auth()).json()
-    # class_done_list_api_response = []
-    # for iteminjson in done_list_api_response_in_json:
-    #     class_done_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Done'))
-    
-    my_view_model = IndexViewModel.build_from_json(todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json)
-    #my_view_model = IndexViewModel(class_todo_list_api_response, doing_list_api_response_in_json, done_list_api_response_in_json)
+
+    my_view_model = IndexView.build_from_json(todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json)
+    #my_view_model = ViewModel(class_todo_list_api_response, doing_list_api_response_in_json, done_list_api_response_in_json)
     return render_template('index.html', view_model=my_view_model)
     #return render_template('index.html', list_todo=class_todo_list_api_response, list_doing=doing_list_api_response_in_json, list_done=done_list_api_response_in_json)
 
