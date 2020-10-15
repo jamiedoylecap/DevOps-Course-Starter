@@ -16,18 +16,25 @@ def move_card_to_list(card_id, new_list_id):
     params['idList'] = new_list_id
     return requests.put(f"https://api.trello.com/1/cards/{card_id}", params=params)
 
+class ApiCall:
+    def __init__(self, api_todo, api_doing, api_done):
+        self.api_todo = api_todo
+        self.api_doing = api_doing
+        self.api_done = api_done
+
+    @staticmethod
+    def grab_the_json_from_trello():
+        api_todo = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_TODO') + '/cards', params=get_trello_auth()).json()
+        api_doing = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DOING') + '/cards', params=get_trello_auth()).json()
+        api_done = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DONE') + '/cards', params=get_trello_auth()).json()
+        
+        return ApiCall(api_todo, api_doing, api_done)
 
 @app.route('/', methods=['get'])
 def index():
-
-    todo_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_TODO') + '/cards', params=get_trello_auth()).json()
-    doing_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DOING') + '/cards', params=get_trello_auth()).json()
-    done_list_api_response_in_json = requests.get('https://api.trello.com/1/lists/' + os.getenv('TRELLO_DONE') + '/cards', params=get_trello_auth()).json()
-
-    my_view_model = IndexView.build_from_json(todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json)
-    #my_view_model = ViewModel(class_todo_list_api_response, doing_list_api_response_in_json, done_list_api_response_in_json)
+    api_responses = ApiCall.grab_the_json_from_trello()
+    my_view_model = IndexView.build_from_json(api_responses.api_todo, api_responses.api_doing, api_responses.api_done)
     return render_template('index.html', view_model=my_view_model)
-    #return render_template('index.html', list_todo=class_todo_list_api_response, list_doing=doing_list_api_response_in_json, list_done=done_list_api_response_in_json)
 
 @app.route('/additem', methods=['post'])
 def add():
