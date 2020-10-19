@@ -1,7 +1,7 @@
-from datetime import date
+from datetime import datetime
 
 class Todo:
-    def __init__(self, item_id, name, status, modified_date = date.today()):
+    def __init__(self, item_id, name, status, modified_date = datetime.utcnow().isoformat()):
         self.item_id = item_id
         self.name = name
         self.status = status
@@ -55,9 +55,7 @@ class ViewModel:
 
     @property
     def recent_done_items(self, parameter_list):
-        """
-        docstring
-        """
+        today_date = datetime.date.today()
         pass
     
     @property
