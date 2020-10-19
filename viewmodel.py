@@ -1,27 +1,68 @@
+from datetime import date
+
 class Todo:
-    def __init__(self, item_id, name, status):
+    def __init__(self, item_id, name, status, modified_date = date.today()):
         self.item_id = item_id
         self.name = name
         self.status = status
+        self.modified_date = modified_date
 
-class Index_view:
+    @classmethod
+    def from_trello_card(cls, trello_card, status):
+        trello_date = date.strftime()
+        return cls(trello_card['id'], trello_card['name'], status, trello_card['dateLastActivity'])
+
+class ViewModel:
     def __init__(self, list_todo, list_doing, list_done):
         self.list_todo = list_todo
         self.list_doing = list_doing
         self.list_done = list_done
 
-    @staticmethod
-    def build_from_json(todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json):
+    @classmethod
+    def build_from_json(cls, todo_list_api_response_in_json, doing_list_api_response_in_json, done_list_api_response_in_json):
         class_todo_list_api_response = []
         for iteminjson in todo_list_api_response_in_json:
-            class_todo_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'To Do'))
+            class_todo_list_api_response.append(Todo.from_trello_card(iteminjson, 'To Do'))
 
         class_doing_list_api_response = []
         for iteminjson in doing_list_api_response_in_json:
-            class_doing_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Doing'))
+            class_doing_list_api_response.append(Todo.from_trello_card(iteminjson, 'Doing'))
         
         class_done_list_api_response = []
         for iteminjson in done_list_api_response_in_json:
-            class_done_list_api_response.append(Todo(iteminjson['id'],iteminjson['name'], 'Done'))
+            class_done_list_api_response.append(Todo.from_trello_card(iteminjson, 'Done'))
         
-        return Index_view(class_todo_list_api_response, class_doing_list_api_response, class_done_list_api_response)
+        return cls(class_todo_list_api_response, class_doing_list_api_response, class_done_list_api_response)
+    
+    @property
+    def just_todo(self):
+        return self.list_todo
+    
+    @property
+    def just_doing(self):
+        return self.list_doing
+    
+    @property
+    def just_done(self):
+        return self.list_done
+    
+    @property
+    def show_all_done_items(self, parameter_list):
+        """
+        docstring
+        """
+        pass
+
+    @property
+    def recent_done_items(self, parameter_list):
+        """
+        docstring
+        """
+        pass
+    
+    @property
+    def older_done_items(self, parameter_list):
+        """
+        docstring
+        """
+        pass
