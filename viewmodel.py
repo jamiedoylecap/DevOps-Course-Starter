@@ -1,4 +1,4 @@
-#from datetime import datetime
+from datetime import datetime
 
 class Todo:
     def __init__(self, item_id, name, status, dateLastActivity):
@@ -54,16 +54,20 @@ class ViewModel:
     def just_done(self):
         return self.list_done
     
-    @property
-    def show_all_done_items(self, parameter_list):
-        """
-        docstring
-        """
-        pass
+    # @property
+    # def show_all_done_items(self, parameter_list):
+    #     """
+    #     docstring
+    #     """
+    #     pass
 
     @property
-    def recent_done_items(self, parameter_list):
-        #today_date = datetime.date.today()
+    def recent_done_items(self, done_list):
+        today_date = datetime.utcnow().strftime("%Y-%m-%d")
+        # for items in done_list:
+        #     if self.dateLastActivity == today_date
+                
+
         pass
     
     @property

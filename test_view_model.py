@@ -3,13 +3,13 @@ from viewmodel import ViewModel, Todo
 def test_can_show_todo_items():
     # Setup
     todo_items = [
-        Todo(1, "New Todo", "To Do")
+        Todo(1, "New Todo", "To Do", "2020-10-19 19:45:58.956766" )
     ]
     doing_items = [
-        Todo(2, "In Progress Todo", "Doing")
+        Todo(2, "In Progress Todo", "Doing", "2020-10-19 19:45:58.956766" )
     ]
     done_items = [
-        Todo(3, "Finished Todo", "Done")
+        Todo(3, "Finished Todo", "Done", "2020-10-19 19:45:58.956766" )
     ]
 
     view_model = ViewModel(todo_items, doing_items, done_items)
@@ -24,13 +24,13 @@ def test_can_show_todo_items():
 def test_can_show_doing_items():
     # Setup
     todo_items = [
-        Todo(1, "New Todo", "To Do")
+        Todo(1, "New Todo", "To Do", "2020-10-19 19:45:58.956766" )
     ]
     doing_items = [
-        Todo(2, "In Progress Todo", "Doing")
+        Todo(2, "In Progress Todo", "Doing", "2020-10-19 19:45:58.956766" )
     ]
     done_items = [
-        Todo(3, "Finished Todo", "Done")
+        Todo(3, "Finished Todo", "Done", "2020-10-19 19:45:58.956766" )
     ]
 
     view_model = ViewModel(todo_items, doing_items, done_items)
@@ -45,13 +45,13 @@ def test_can_show_doing_items():
 def test_can_show_done_items():
     # Setup
     todo_items = [
-        Todo(1, "New Todo", "To Do")
+        Todo(1, "New Todo", "To Do", "2020-10-19 19:45:58.956766" )
     ]
     doing_items = [
-        Todo(2, "In Progress Todo", "Doing")
+        Todo(2, "In Progress Todo", "Doing", "2020-10-19 19:45:58.956766" )
     ]
     done_items = [
-        Todo(3, "Finished Todo", "Done")
+        Todo(3, "Finished Todo", "Done", "2020-10-19 19:45:58.956766" )
     ]
 
     view_model = ViewModel(todo_items, doing_items, done_items)
