@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 from flask import Flask, render_template, request, redirect, url_for
-from viewmodel import Todo, Index_view
+from viewmodel import Todo, ViewModel
 
 
 app = Flask(__name__)
@@ -33,7 +33,7 @@ class Api_call:
 @app.route('/', methods=['get'])
 def index():
     api_responses = Api_call.grab_the_json_from_trello()
-    my_view_model = Index_view.build_from_json(api_responses.api_todo, api_responses.api_doing, api_responses.api_done)
+    my_view_model = ViewModel.build_from_json(api_responses.api_todo, api_responses.api_doing, api_responses.api_done)
     return render_template('index.html', view_model=my_view_model)
 
 @app.route('/test', methods=['get'])

@@ -1,16 +1,17 @@
 from datetime import datetime
 
 class Todo:
-    def __init__(self, item_id, name, status, modified_date = datetime.utcnow().isoformat()):
+    def __init__(self, item_id, name, status):
         self.item_id = item_id
         self.name = name
         self.status = status
-        self.modified_date = modified_date
+        #self.modified_date = modified_date
 
     @classmethod
     def from_trello_card(cls, trello_card, status):
-        trello_date = date.strftime()
-        return cls(trello_card['id'], trello_card['name'], status, trello_card['dateLastActivity'])
+        #trello_date = date.strftime()
+        #return cls(trello_card['id'], trello_card['name'], status, trello_card['dateLastActivity'])
+        return cls(trello_card['id'], trello_card['name'], status)
 
 class ViewModel:
     def __init__(self, list_todo, list_doing, list_done):
