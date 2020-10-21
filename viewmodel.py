@@ -53,13 +53,6 @@ class ViewModel:
     @property
     def just_done(self):
         return self.list_done
-    
-    # @property
-    # def show_all_done_items(self, parameter_list):
-    #     """
-    #     docstring
-    #     """
-    #     pass
 
     @property
     def recent_done_items(self, done_list):
