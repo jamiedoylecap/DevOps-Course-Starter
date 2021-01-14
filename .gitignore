@@ -117,3 +117,6 @@ env/
 ### Configuration files ###
 .env
 .env.template
+
+### VSCode
+.vscode/
