@@ -14,10 +14,6 @@ def create_app():
         my_view_model = ViewModel.build_from_json(api_responses.api_todo, api_responses.api_doing, api_responses.api_done)
         return render_template('index.html', view_model=my_view_model)
 
-    @app.route('/test', methods=['get'])
-    def test():
-        return render_template('test.html')
-
     @app.route('/additem', methods=['post'])
     def add():
         new_item = request.form.get('new_title')

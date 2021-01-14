@@ -1,3 +1,5 @@
+import pytest
+
 @pytest.fixture
 def client():
     # Use our test integration config instead of the 'real' version
@@ -8,3 +10,7 @@ def client():
     # Use the app to create a test_client that can be used in our tests.
     with test_app.test_client() as client:
         yield client
+        
+def test_index_page(mock_get_requests, client): response = client.get('/')
+
+

@@ -1,5 +1,6 @@
 from viewmodel import ViewModel, Todo
 
+
 def test_can_show_todo_items():
     # Setup
     todo_items = [
