@@ -53,5 +53,5 @@ def test_index_page(monkeypatch, client):
     # print (response.data.decode('utf-8'))
     decoded_response = response.data.decode('utf-8')
     assert "Durnan" in decoded_response
-    
+    assert "Torrin" in decoded_response
 
