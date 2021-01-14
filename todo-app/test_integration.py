@@ -28,20 +28,12 @@ def test_index_page(monkeypatch, client):
         return mockup(
             [
                 {
-                    "name": "test-item-1",
-                    "id": "test-id-1",
-                    "desc": "test-description-1",
-                    "due": "2020-12-25T12:00:00.000000Z",
-                    "dateLastActivity": "2020-10-25T12:00:00.000000Z",
-                    "idList": "test-todo-list-id"
-                },
-                {
-                    "name": "test-item-2",
-                    "id": "test-id-2",
-                    "desc": "test-description-2",
-                    "due": "2020-12-26T12:00:00.000000Z",
-                    "dateLastActivity": "2020-10-26T12:00:00.000000Z",
-                    "idList": "test-doing-list-id"
+                    "name": "Durnan",
+                    "id": "001",
+                    "desc": "desc1",
+                    "due": "2021-01-14T16:00:00.000000Z",
+                    "dateLastActivity": "2020-12-01T09:00:00.000000Z",
+                    "idList": "todo"
                 }
             ])
     monkeypatch.setattr(requests, "get", mockget)
@@ -49,5 +41,6 @@ def test_index_page(monkeypatch, client):
     response = client.get('/')
     # Assert
     assert response.status_code == 200
-
+    # assert "Durnan" in response.data
+    
 
