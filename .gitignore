@@ -119,7 +119,7 @@ env/
 .env.template
 
 ### VSCode
-# .vscode
+ .vscode
 
 ### vagrant
-# .vagrant
+ .vagrant
