@@ -33,7 +33,15 @@ def test_index_page(monkeypatch, client):
                     "desc": "desc1",
                     "due": "2021-01-14T16:00:00.000000Z",
                     "dateLastActivity": "2020-12-01T09:00:00.000000Z",
-                    "idList": "todo"
+                    "idList": "api_todo"
+                },
+                {
+                    "name": "Torrin",
+                    "id": "002",
+                    "desc": "desc2",
+                    "due": "2021-01-14T16:00:00.000000Z",
+                    "dateLastActivity": "2020-12-01T09:00:00.000000Z",
+                    "idList": "api_doing"
                 }
             ])
     monkeypatch.setattr(requests, "get", mockget)
@@ -42,5 +50,8 @@ def test_index_page(monkeypatch, client):
     # Assert
     assert response.status_code == 200
     # assert "Durnan" in response.data
+    # print (response.data.decode('utf-8'))
+    decoded_response = response.data.decode('utf-8')
+    assert "Durnan" in decoded_response
     
 
