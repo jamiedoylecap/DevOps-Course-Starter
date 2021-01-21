@@ -5,6 +5,7 @@
 instance/*
 !instance/.gitignore
 .webassets-cache
+logs.txt
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -118,3 +119,6 @@ env/
 
 ### Configuration files ###
 .env
+.envdocker
+.env.template
+.env.test
