@@ -3,6 +3,7 @@
 ## Documentation - Diagrams
 
 To read the diagrams located in diagrams.md either install Java and  the [Markdown Preview Enhanced](https://github.com/shd101wyy/vscode-markdown-preview-enhanced) extension for VSCode or cut and paste the code between the PUML code delimiters to the [PlantUML Webserver](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)
+For ease I have also added a PNG version in the documentation folder.
 
 ## System Requirements
 
