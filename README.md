@@ -1,5 +1,10 @@
 # DevOps Apprenticeship: Project Exercise
 
+## Documentation - Diagrams
+
+To read the diagrams located in diagrams.md either install Java and  the [Markdown Preview Enhanced](https://github.com/shd101wyy/vscode-markdown-preview-enhanced) extension for VSCode or cut and paste the code between the PUML code delimiters to the [PlantUML Webserver](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)
+For ease I have also added a PNG version in the documentation folder.
+
 ## System Requirements
 
 The project uses poetry for Python to create an isolated environment and manage package dependencies. To prepare your system, ensure you have an official distribution of Python version 3.7+ and install poetry using one of the following commands (as instructed by the [poetry documentation](https://python-poetry.org/docs/#system-requirements)):
