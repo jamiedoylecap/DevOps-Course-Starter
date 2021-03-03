@@ -1,11 +1,8 @@
-# Created by https://www.gitignore.io/api/flask
-# Edit at https://www.gitignore.io/?templates=flask
-
+# Created by copying .gitignore
 ### Flask ###
 instance/*
 !instance/.gitignore
 .webassets-cache
-logs.txt
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -116,18 +113,12 @@ dmypy.json
 
 ### Virtual environment ###
 env/
-.venv
-.venv/
 
 ### Configuration files ###
 .env
-.env.template
-
-### VSCode
-.vscode
-
-### vagrant
-.vagrant
 .envdocker
 .env.template
 .env.test
+
+### Dockerfile
+Dockerfile
