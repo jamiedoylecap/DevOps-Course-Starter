@@ -1,34 +1,55 @@
 # DevOps Apprenticeship: Project Exercise
 
-## Getting started
+## Documentation - Diagrams
 
-The project uses a virtual environment to isolate package dependencies. To create the virtual environment and install required packages, run the following from a bash shell terminal:
+To read the diagrams located in diagrams.md either install Java and  the [Markdown Preview Enhanced](https://github.com/shd101wyy/vscode-markdown-preview-enhanced) extension for VSCode or cut and paste the code between the PUML code delimiters to the [PlantUML Webserver](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)
+For ease I have also added a PNG version in the documentation folder.
 
-### On macOS and Linux
+## System Requirements
 
-```bash
-$ source setup.sh
+The project uses poetry for Python to create an isolated environment and manage package dependencies. To prepare your system, ensure you have an official distribution of Python version 3.7+ and install poetry using one of the following commands (as instructed by the [poetry documentation](https://python-poetry.org/docs/#system-requirements)):
+
+### Poetry installation (Bash)
+
+Local
+Installed by Vagrant
+Doc
+
+## Dependencies
+
+All dependencies will be deployed into the VM by vagrant or into the container by docker
+
+## Running the App
+
+### With Vagrant creating a VM
+
+Simply run kick vagrant into life with
+
+``` bash
+$ vagrant up
+$ vagrant ssh
 ```
 
-### On Windows (Using PowerShell)
+### As a docker
 
-```powershell
-.\setup.ps1
-```
+#### Development
 
-### On Windows (Using Git Bash)
+Build the image with  
+`docker build --target dev --tag todo:dev .`  
+Run the container with  
+`docker run -p 9000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todo-app,target=/todo-app todo:dev`
+The development site will now be available at [`http://localhost:9000/`](http://localhost:9000/)
 
-```bash
-$ source setup.sh --windows
-```
+#### Production
 
-Once the setup script has completed and all packages have been installed, start the Flask app by running:
+Build the image with  
+`docker build --target prod --tag todo:prod .`  
+Run the container with  
+`docker run -p 8000:8000 --env-file .env todo:prod`
 
-```bash
-$ flask run
-```
+The production site will now be available at [`http://localhost:8000/`](http://localhost:8000/)
 
-You should see output similar to the following:
+You should see python installing and output similar to the following:
 
 ```bash
  * Serving Flask app "app" (lazy loading)
@@ -45,14 +66,20 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 ### Notes
 
 The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change).
+
 There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
 
-When running `setup.sh`, the `.env.template` file will be copied to `.env` if the latter does not exist.
+Create the .env file for the first time by running `cp .env.template .env`
 
 .env file should contain the following keys that are excluded from the git synch by .gitignore
+ 
+ - FLASK_APP
+ - FLASK_ENV
+ - SECRET_KEY
+ - TRELLO_KEY
+ - TRELLO_TOKEN
+ - TRELLO_TODO
+ - TRELLO_DOING
+ - TRELLO_DONE
 
-* TRELLO_KEY
-* TRELLO_TOKEN
-* TRELLO_TODO
-* TRELLO_DOING
-* TRELLO_DONE
+
