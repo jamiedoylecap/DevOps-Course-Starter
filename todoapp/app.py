@@ -2,11 +2,10 @@ import os
 from dotenv import load_dotenv
 import requests
 from flask import Flask, render_template, request, redirect, url_for
-from viewmodel import Todo, ViewModel
+from todoapp.viewmodel import Todo, ViewModel
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('flask_config.Config')
     
     @app.route('/', methods=['get'])
     def index():

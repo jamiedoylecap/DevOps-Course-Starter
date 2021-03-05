@@ -1,7 +1,7 @@
 import pytest
 import requests
 from dotenv import find_dotenv, load_dotenv
-from app import create_app
+from todoapp.app import create_app
 
 class mockup(object):
     def __init__(self,json):
@@ -12,7 +12,7 @@ class mockup(object):
 @pytest.fixture
 def client():
     # Use our test integration config instead of the 'real' version
-    file_path = find_dotenv('todo-app/.env.test')
+    file_path = find_dotenv('todoapp/.env.test')
     load_dotenv(file_path, override=True)
     # Create the new app.
     test_app = create_app()

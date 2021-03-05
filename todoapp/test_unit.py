@@ -1,4 +1,4 @@
-from viewmodel import ViewModel, Todo
+from todoapp.viewmodel import ViewModel, Todo
 
 
 def test_can_show_todo_items():
