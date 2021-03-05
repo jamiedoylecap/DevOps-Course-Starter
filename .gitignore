@@ -116,9 +116,18 @@ dmypy.json
 
 ### Virtual environment ###
 env/
+.venv
+.venv/
 
 ### Configuration files ###
 .env
+.env.template
+
+### VSCode
+.vscode
+
+### vagrant
+.vagrant
 .envdocker
 .env.template
 .env.test

@@ -6,7 +6,7 @@ EXPOSE 5000
 
 FROM base as prod
 COPY . .
-ENTRYPOINT ["poetry","run","gunicorn","-w","4","-b","0.0.0.0","todo-app.app:app"]
+ENTRYPOINT ["poetry","run","gunicorn","-w","4","-b","0.0.0.0","todoapp.app:create_app()"]
 
 FROM base as dev
 ENTRYPOINT ["poetry","run","flask","run","--host=0.0.0.0"]
