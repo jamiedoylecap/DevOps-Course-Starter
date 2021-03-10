@@ -37,8 +37,16 @@ $ vagrant ssh
 Build the image with  
 `docker build --target dev --tag todo:dev .`  
 Run the container with  
-`docker run -p 9000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:dev`
-The development site will now be available at [`http://localhost:9000/`](http://localhost:9000/)
+`docker run -p 1000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:dev`
+The development site will now be available at [`http://localhost:1000/`](http://localhost:9000/)
+
+#### Testing
+
+Build the image with  
+`docker build --target test --tag todo:test .`  
+Run the container with  
+`docker run -p 2000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:test`
+The development site will now be available at [`http://localhost:2000/`](http://localhost:9000/)
 
 #### Production
 
