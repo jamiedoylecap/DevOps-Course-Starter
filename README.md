@@ -45,7 +45,7 @@ The development site will now be available at [`http://localhost:1000/`](http://
 Build the image with  
 `docker build --target test --tag todo:test .`  
 Run the container with  
-`docker run -p 2000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:test`
+`docker run -p 2000:5000 --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:test todoapp`
 The development site will now be available at [`http://localhost:2000/`](http://localhost:9000/)
 
 #### Production
