@@ -32,6 +32,8 @@ $ vagrant ssh
 
 ### As a docker
 
+Remove all stopped docker containers with `docker rm $(docker ps -a -q)`
+
 #### Development
 
 Build the image with  

@@ -15,4 +15,8 @@ ENTRYPOINT ["poetry","run","flask","run","--host=0.0.0.0"]
 
 # testing
 FROM base as test
+# Install Chrome
+#RUN curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb &&\
+#apt-get install ./chrome.deb -y
+
 ENTRYPOINT ["poetry","run","pytest"]
