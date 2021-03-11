@@ -1,3 +1,4 @@
 script:
 - echo "hello world"
 - docker build --target test --tag todo:test .
+- docker run --env-file .env --mount type=bind,source="$(pwd)"/todoapp,target=/todoapp todo:test todoapp
